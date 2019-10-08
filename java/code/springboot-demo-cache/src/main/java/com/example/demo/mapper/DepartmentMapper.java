@@ -7,14 +7,17 @@ import org.apache.ibatis.annotations.*;
 public interface DepartmentMapper {
 
     @Select("select * from department where id = #{id}")
-    public Department getDepartmentById(Integer id);
+    Department getDepartmentById(Integer id);
 
     @Update("update department set departmentName=#{departmentName} where id = #{id}")
     void update(Department department);
 
     @Delete("delete from department where id = #{id}")
-    public void deleteById(Integer id);
+    void deleteById(Integer id);
 
     @Insert("insert into department(departmentName) values(#{departmentName})")
-    public void insert(Department department);
+    void insert(Department department);
+
+    @Select("select * from department where departmentName = #{name}")
+    Department getDepartmentByName(String name);
 }

@@ -29,4 +29,19 @@ public class DepartmentController {
         Department updateDep = departmentService.updateDep(department);
         return updateDep;
     }
+
+    @GetMapping("/dep/del")
+    @ResponseBody
+    public String del(Integer id){
+        departmentService.del(id);
+        return "success";
+    }
+
+    // 通过名字查询
+    @GetMapping("/dep/name/{name}")
+    @ResponseBody
+    public Department getDepartment(@PathVariable("name") String name) {
+        Department departmentById = departmentService.getByName(name);
+        return departmentById;
+    }
 }
